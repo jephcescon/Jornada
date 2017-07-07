@@ -7,6 +7,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.jornada.controllers.HomeController;
 import br.com.jornada.daos.UsuarioDAO;
+import br.com.jornada.models.Usuario;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = { HomeController.class, UsuarioDAO.class })

@@ -37,7 +37,6 @@ public class JPAConfiguration {
 
 		factoryBean.setJpaProperties(props);
 
-		factoryBean.setPackagesToScan("br.com.casadocodigo.loja.models");
 		factoryBean.setPackagesToScan("br.com.jornada.models");
 
 		return factoryBean;

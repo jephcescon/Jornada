@@ -1,5 +1,7 @@
 package br.com.jornada.daos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,4 +20,8 @@ public class UsuarioDAO {
     public void gravar(Usuario usuario){
         manager.persist(usuario);
     }
+
+	public List<Usuario> listar() {
+		return manager.createQuery("select u from Usuario u", Usuario.class).getResultList();
+	}
 }
