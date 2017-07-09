@@ -36,4 +36,10 @@ public class UsuarioController {
 		modelAndView.addObject("usuarios", usuarios);
 		return modelAndView;
 	}
+	
+	@RequestMapping("/usuarios/apagar")
+	public ModelAndView apagar(Integer id) {
+		usuarioDao.apagar(id);
+		return new ModelAndView("redirect:lista");
+	}
 }

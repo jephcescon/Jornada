@@ -24,4 +24,9 @@ public class UsuarioDAO {
 	public List<Usuario> listar() {
 		return manager.createQuery("select u from Usuario u", Usuario.class).getResultList();
 	}
+
+	public void apagar(Integer id) {
+		Usuario usuario = this.manager.find(Usuario.class, id);
+		this.manager.remove(usuario);		
+	}
 }
