@@ -29,4 +29,13 @@ public class UsuarioDAO {
 		Usuario usuario = this.manager.find(Usuario.class, id);
 		this.manager.remove(usuario);		
 	}
+	
+	public void alterar(Usuario usuario) {
+		this.manager.merge(usuario);		
+	}
+	
+	public Usuario buscar(Integer id){
+		Usuario usuario = this.manager.find(Usuario.class, id);
+		return usuario;
+	}
 }
