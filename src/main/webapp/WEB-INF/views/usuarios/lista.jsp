@@ -51,8 +51,8 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuários<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/jornada/usuarios/lista">Listar</a></li>
-							<li><a href="/jornada/usuarios/form">Inclur</a></li>
+							<li><a href="${s:mvcUrl('UC#listar').build() }">Listar</a></li>
+							<li><a href="${s:mvcUrl('UC#form').build() }">Inclur</a></li>
 						</ul>
 					</li>
                 </ul>
@@ -70,10 +70,10 @@
 	            <table class="table table-inverse">
 					<thead>
 						<tr>
-							<td>Nome</td>
-							<td>E-mail</td>
-							<td>Senha</td>
-							<td>Ações</td>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th>Senha</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
