@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +21,7 @@ public class Evento {
 	@Lob
 	private String descricao;
 	private String site;
-	@OneToOne
+	@ManyToOne
 	private Usuario organizador;
 	private String local;
 	private String logo;
@@ -64,8 +64,10 @@ public class Evento {
 		return organizador.getNome();
 	}
 
-	public void setOrganizador(Usuario organizador) {
-		this.organizador = organizador;
+	public void setOrganizador(Integer organizador) {
+		Usuario usuario = new Usuario();
+		usuario.setId(organizador);
+		this.organizador = usuario;
 	}
 
 	public String getLocal() {
@@ -90,5 +92,11 @@ public class Evento {
 
 	public void setData(Calendar data) {
 		this.data = data;
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", site=" + site + ", organizador="
+				+ organizador + ", local=" + local + ", logo=" + logo + "]";
 	}
 }

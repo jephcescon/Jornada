@@ -1,9 +1,13 @@
 package br.com.jornada.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -14,6 +18,8 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	@OneToMany
+	private List<Evento> eventos = new ArrayList<Evento>();
 	
 	public int getId() {
 		return id;
@@ -38,6 +44,12 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public List<Evento> getEventos() {
+		return eventos;
+	}
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
 	}
 	
 	@Override

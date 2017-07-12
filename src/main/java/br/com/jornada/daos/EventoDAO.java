@@ -20,4 +20,8 @@ public class EventoDAO {
 	public List<Evento> listar() {
 		return manager.createQuery("select e from Evento e", Evento.class).getResultList();
 	}
+
+	public void gravar(Evento evento) {
+		this.manager.persist(evento);
+	}
 }
