@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,7 +53,28 @@ public class EventoController {
 
 	@RequestMapping("/gravar")
 	public ModelAndView gravar(@Valid Evento evento, BindingResult result) {
-		eventoDao.gravar(evento);
+		System.out.println(evento);
+		//eventoDao.gravar(evento);
 		return new ModelAndView("redirect:/evento");
+	}
+	
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public ModelAndView editar(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("eventos/editar");
+		Evento evento = eventoDao.buscar(id);
+		modelAndView.addObject("evento", evento);
+		List<Usuario> usuarios = usuarioDao.listar();
+		modelAndView.addObject("usuarios", usuarios);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
+	public ModelAndView editarEvento(@ModelAttribute Evento evento, @PathVariable Integer id) {
+
+		ModelAndView modelAndView = new ModelAndView("redirect:/evento/lista");
+
+		eventoDao.alterar(evento);
+
+		return modelAndView;
 	}
 }

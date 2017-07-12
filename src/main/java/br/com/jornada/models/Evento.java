@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +21,7 @@ public class Evento {
 	@Lob
 	private String descricao;
 	private String site;
-	@ManyToOne
+	@OneToOne
 	private Usuario organizador;
 	private String local;
 	private String logo;
@@ -60,13 +60,14 @@ public class Evento {
 		this.site = site;
 	}
 
-	public String getOrganizador() {
-		return organizador.getNome();
+	public Usuario getOrganizador() {
+		return organizador;
 	}
 
 	public void setOrganizador(Integer organizador) {
+		System.out.println(organizador);
 		Usuario usuario = new Usuario();
-		usuario.setId(organizador);
+		usuario.setId(1);
 		this.organizador = usuario;
 	}
 

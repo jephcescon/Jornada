@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jornada.models.Evento;
+import br.com.jornada.models.Usuario;
 
 @Repository
 @Transactional
@@ -23,5 +24,14 @@ public class EventoDAO {
 
 	public void gravar(Evento evento) {
 		this.manager.persist(evento);
+	}
+
+	public Evento buscar(Integer id) {
+		Evento evento = this.manager.find(Evento.class, id);
+		return evento;
+	}
+
+	public void alterar(Evento evento) {
+		this.manager.merge(evento);		
 	}
 }
