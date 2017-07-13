@@ -2,8 +2,6 @@ package br.com.jornada.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +17,7 @@ import br.com.jornada.daos.EventoDAO;
 import br.com.jornada.daos.UsuarioDAO;
 import br.com.jornada.models.Evento;
 import br.com.jornada.models.Usuario;
+import br.com.jornada.models.dto.EventoDTO;
 import br.com.jornada.validation.EventoValidation;
 
 @Controller
@@ -30,10 +29,10 @@ public class EventoController {
 	@Autowired
 	private UsuarioDAO usuarioDao;
 
-	@InitBinder
-	public void InitBinder(WebDataBinder binder) {
-		binder.addValidators(new EventoValidation());
-	}
+//	@InitBinder
+//	public void InitBinder(WebDataBinder binder) {
+//		binder.addValidators(new EventoValidation());
+//	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView listar() {
@@ -52,7 +51,8 @@ public class EventoController {
 	}
 
 	@RequestMapping("/gravar")
-	public ModelAndView gravar(@Valid Evento evento, BindingResult result) {
+	public ModelAndView gravar(EventoDTO dto, BindingResult result) {
+		Evento evento = dto.toEvento(usuarioDao);
 		System.out.println(evento);
 		//eventoDao.gravar(evento);
 		return new ModelAndView("redirect:/evento");

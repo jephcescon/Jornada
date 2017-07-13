@@ -1,32 +1,41 @@
-package br.com.jornada.models;
+package br.com.jornada.models.dto;
 
 import java.util.Calendar;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import br.com.jornada.daos.UsuarioDAO;
+import br.com.jornada.models.Evento;
+import br.com.jornada.models.Usuario;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-public class Evento {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EventoDTO {
+	
 	private int id;
 	private String nome;
-	@Lob
+
 	private String descricao;
 	private String site;
-	@OneToOne
-	private Usuario organizador;
+
+	private Integer organizador;
 	private String local;
 	private String logo;
-	@DateTimeFormat
+
 	private Calendar data;
+	
+	public Evento toEvento(UsuarioDAO dao){
+		
+		Evento evento = new Evento();
+		evento.setData(data);
+		evento.setDescricao(descricao);
+		evento.setLocal(local);
+		evento.setLogo(logo);
+		evento.setNome(nome);
+		evento.setSite(site);
+		
+		Usuario organizador = dao.buscar(this.organizador);
+		
+		evento.setOrganizador(organizador);
+		
+		return evento;
+	}
 
 	public int getId() {
 		return id;
@@ -60,12 +69,11 @@ public class Evento {
 		this.site = site;
 	}
 
-	public Usuario getOrganizador() {
+	public Integer getOrganizador() {
 		return organizador;
 	}
 
-	public void setOrganizador(Usuario organizador) {
-	
+	public void setOrganizador(Integer organizador) {
 		this.organizador = organizador;
 	}
 
@@ -93,9 +101,5 @@ public class Evento {
 		this.data = data;
 	}
 
-	@Override
-	public String toString() {
-		return "Evento [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", site=" + site + ", organizador="
-				+ organizador + ", local=" + local + ", logo=" + logo + "]";
-	}
+	
 }
