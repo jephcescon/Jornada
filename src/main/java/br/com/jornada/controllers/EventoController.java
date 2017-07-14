@@ -77,4 +77,10 @@ public class EventoController {
 
 		return modelAndView;
 	}
+
+	@RequestMapping("/apagar")
+	public ModelAndView apagar(Integer id) {
+		eventoDao.apagar(id);
+		return new ModelAndView("redirect:/evento");
+	}
 }

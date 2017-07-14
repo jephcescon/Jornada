@@ -31,6 +31,26 @@
   										<a href="${s:mvcUrl('EC#editar').arg(0, evento.id).build()}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 									</button>
 									<a href="#myModal_${evento.id}" role="button" class="btn btn-danger" data-toggle="modal"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+									
+									<div id="myModal_${evento.id}" class="modal fade">
+									    <div class="modal-dialog">
+									        <div class="modal-content">
+									            <div class="modal-header">
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									                <h4 class="modal-title">Excluir evento</h4>
+									            </div>
+									
+									            <div class="modal-body">
+									                <p>Tem certeza que deseja apagar esse evento?? </p>
+									            </div>
+									            <div class="modal-footer">
+									
+									                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+									                <a href="/jornada/evento/apagar?id=${evento.id}" title="Apagar" class="btn btn-danger"><i class="fa fa-trash-o"></i>Apagar</a>
+									            </div>
+									        </div>
+									    </div>
+									</div>
 								</td>
 							</tr>
 						</c:forEach>
