@@ -64,10 +64,9 @@ public class Evento {
 		return organizador;
 	}
 
-	public void setOrganizador(Integer organizador) {
-		System.out.println(organizador);
+	public void setOrganizador(Integer organizadorId) {
 		Usuario usuario = new Usuario();
-		usuario.setId(organizador);
+		usuario.setId(organizadorId);
 		this.organizador = usuario;
 	}
 

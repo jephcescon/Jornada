@@ -62,6 +62,12 @@
 							<li><a href="${s:mvcUrl('EC#form').build() }">Inclur</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Palestras<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="${s:mvcUrl('PC#listar').build() }">Listar</a></li>
+						</ul>
+					</li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
