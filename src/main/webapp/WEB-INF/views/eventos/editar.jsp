@@ -9,7 +9,7 @@
         <!-- Portfolio Item Row -->
         <div class="row">
             <div class="col-md-12">
-            	<form:form action="${s:mvcUrl('EC#gravar').build() }" method="post">
+            	<form:form action="${s:mvcUrl('EC#editar').arg(0, evento.id).build() }" method="post">
 					<div for="nome" class="form-group">
 						<label for="nome">Nome</label> 
 						<input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" value="${evento.nome}" autofocus />

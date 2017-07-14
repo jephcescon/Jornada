@@ -52,12 +52,12 @@ public class EventoController {
 	}
 
 	@RequestMapping("/gravar")
-	public ModelAndView gravar(@Valid Evento evento, BindingResult result) {
+	public ModelAndView gravar(Evento evento, BindingResult result) {
 		System.out.println(evento);
-		//eventoDao.gravar(evento);
+		eventoDao.gravar(evento);
 		return new ModelAndView("redirect:/evento");
 	}
-	
+
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
 	public ModelAndView editar(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("eventos/editar");
@@ -67,11 +67,11 @@ public class EventoController {
 		modelAndView.addObject("usuarios", usuarios);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
 	public ModelAndView editarEvento(@ModelAttribute Evento evento, @PathVariable Integer id) {
 
-		ModelAndView modelAndView = new ModelAndView("redirect:/evento/lista");
+		ModelAndView modelAndView = new ModelAndView("redirect:/evento");
 
 		eventoDao.alterar(evento);
 
