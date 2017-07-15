@@ -33,4 +33,9 @@ public class PalestraDAO {
 	public void alterar(Palestra palestra) {
 		this.manager.merge(palestra);
 	}
+
+	public void apagar(Integer id) {
+		Palestra palestra = this.manager.find(Palestra.class, id);
+		this.manager.remove(palestra);
+	}
 }

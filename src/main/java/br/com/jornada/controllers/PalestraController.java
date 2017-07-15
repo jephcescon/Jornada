@@ -81,4 +81,10 @@ public class PalestraController {
 
 		return modelAndView;
 	}
+
+	@RequestMapping("/apagar")
+	public ModelAndView apagar(Integer id) {
+		palestraDao.apagar(id);
+		return new ModelAndView("redirect:/palestra");
+	}
 }
