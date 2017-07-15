@@ -24,7 +24,7 @@
 								<td>${palestra.evento.nome}</td>
 								<td>
 									<button type="button" class="btn btn-success" aria-label="Left Align">
-  										<a href="${s:mvcUrl('UC#editar').arg(0, usuario.id).build()}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+  										<a href="${s:mvcUrl('PC#editar').arg(0, palestra.id).build()}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 									</button>
 									<a href="#myModal_${usuario.id}" role="button" class="btn btn-danger" data-toggle="modal"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 								</td>

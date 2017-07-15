@@ -24,4 +24,13 @@ public class PalestraDAO {
 	public void gravar(Palestra palestra) {
 		this.manager.persist(palestra);
 	}
+
+	public Palestra buscar(Integer id) {
+		Palestra palestra = this.manager.find(Palestra.class, id);
+		return palestra;
+	}
+
+	public void alterar(Palestra palestra) {
+		this.manager.merge(palestra);
+	}
 }
