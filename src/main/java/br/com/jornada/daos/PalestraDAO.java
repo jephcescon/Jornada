@@ -20,4 +20,8 @@ public class PalestraDAO {
 	public List<Palestra> listar() {
 		return manager.createQuery("select p from Palestra p", Palestra.class).getResultList();
 	}
+
+	public void gravar(Palestra palestra) {
+		this.manager.persist(palestra);
+	}
 }

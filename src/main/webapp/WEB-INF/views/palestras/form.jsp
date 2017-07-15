@@ -8,46 +8,36 @@
         <!-- Portfolio Item Row -->
         <div class="row">
             <div class="col-md-12">
-            	<form:form action="${s:mvcUrl('EC#gravar').build() }" method="post">
-					<div for="nome" class="form-group">
-						<label for="nome">Nome</label> 
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" value="" autofocus />
-						<form:errors path="evento.nome" />
+            	<form:form action="${s:mvcUrl('PC#gravar').build() }" method="post">
+					<div for="titulo" class="form-group">
+						<label for="titulo">titulo</label> 
+						<input type="text" name="titulo" class="form-control" id="titulo" placeholder="titulo" value="" autofocus />
+						<form:errors path="evento.titulo" />
 					</div>
 					<div for="descricao" class="form-group">
 						<label>Descrição</label>
 						<input type="text" name="descricao" class="form-control" id="descricao" placeholder="Descrição" value="" />
 						<form:errors path="evento.descricao" />
 					</div>
-					<div for="site" class="form-group">
-						<label>Site</label>
-						<input type="text" name="site" class="form-control" id="site" placeholder="Site" value="" />
-						<form:errors path="evento.site" />
-					</div>
-					<div for="organizador" class="form-group">
-						<label>Organizador</label>
-						<select name="organizador" class="form-control" id="organizador">
+					<div for="palestrante" class="form-group">
+						<label>palestrante</label>
+						<select name="palestrante" class="form-control" id="palestrante">
 						      <option value="0">-- Selecione um usuario --</option>
 						      <c:forEach items="${usuarios}" var="usuario">
 						            <option value="${usuario.id}">${usuario.nome}</option>
 						        </c:forEach>
 						</select>
-						<form:errors path="evento.organizador" />
+						<form:errors path="evento.palestrante" />
 					</div>
-					<div for="local" class="form-group">
-						<label>Local</label>
-						<input type="text" name="local" class="form-control" id="local" placeholder="Local" value="" />
-						<form:errors path="evento.local" />
-					</div>
-					<div for="logo" class="form-group">
-						<label>Logo</label>
-						<input type="text" name="logo" class="form-control" id="logo" placeholder="Logo" value="" />
-						<form:errors path="evento.logo" />
-					</div>
-					<div for="data" class="form-group">
-						<label>Data</label>
-						<input type="text" name="data" class="form-control" id="data" placeholder="Data dd/mm/aaaa" value="" />
-						<form:errors path="evento.data" />
+					<div for="evento" class="form-group">
+						<label>evento</label>
+						<select name="evento" class="form-control" id="evento">
+						      <option value="0">-- Selecione um evento --</option>
+						      <c:forEach items="${eventos}" var="evento">
+						            <option value="${evento.id}">${evento.nome}</option>
+						        </c:forEach>
+						</select>
+						<form:errors path="evento.evento" />
 					</div>
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</form:form>
