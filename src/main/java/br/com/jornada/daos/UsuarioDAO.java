@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +17,11 @@ import br.com.jornada.models.Usuario;
 public class UsuarioDAO {
 
 	@PersistenceContext
-    private EntityManager manager;
+	private EntityManager manager;
 
-    public void gravar(Usuario usuario){
-        manager.persist(usuario);
-    }
+	public void gravar(Usuario usuario) {
+		manager.persist(usuario);
+	}
 
 	public List<Usuario> listar() {
 		return manager.createQuery("select u from Usuario u", Usuario.class).getResultList();
@@ -27,14 +29,14 @@ public class UsuarioDAO {
 
 	public void apagar(Integer id) {
 		Usuario usuario = this.manager.find(Usuario.class, id);
-		this.manager.remove(usuario);		
+		this.manager.remove(usuario);
 	}
-	
+
 	public void alterar(Usuario usuario) {
-		this.manager.merge(usuario);		
+		this.manager.merge(usuario);
 	}
-	
-	public Usuario buscar(Integer id){
+
+	public Usuario buscar(Integer id) {
 		Usuario usuario = this.manager.find(Usuario.class, id);
 		return usuario;
 	}

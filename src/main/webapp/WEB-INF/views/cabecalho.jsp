@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,6 +70,27 @@
 							<li><a href="${s:mvcUrl('PC#form').build() }">Inclur</a></li>
 						</ul>
 					</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                	<security:authorize access="hasRole('ROLE_ADMIN')">
+                    <li>
+	                    <a href="#">
+	                   		<security:authentication property="principal" var="usuario"/>Usuário: ${usuario.username}
+	        			</a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.servletContext.contextPath}/Logout">
+                        	Logout
+                        </a>
+                    </li>
+		        	</security:authorize>
+		        	<security:authorize access="!hasRole('ROLE_ADMIN')">
+                    <li>
+                        <a href="${pageContext.servletContext.contextPath}/login">
+                        	Logar
+                        </a>
+                    </li>
+		        	</security:authorize>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
