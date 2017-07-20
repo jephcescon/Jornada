@@ -44,7 +44,7 @@ public class PalestraController {
 		List<Usuario> usuarios = usuarioDao.listar();
 		modelAndView.addObject("usuarios", usuarios);
 
-		List<Evento> eventos = eventoDao.listar();
+		List<Evento> eventos = eventoDao.listarAtivos();
 		modelAndView.addObject("eventos", eventos);
 
 		return modelAndView;
@@ -66,7 +66,7 @@ public class PalestraController {
 		List<Usuario> usuarios = usuarioDao.listar();
 		modelAndView.addObject("usuarios", usuarios);
 
-		List<Evento> eventos = eventoDao.listar();
+		List<Evento> eventos = eventoDao.listarAtivos();
 		modelAndView.addObject("eventos", eventos);
 		
 		return modelAndView;

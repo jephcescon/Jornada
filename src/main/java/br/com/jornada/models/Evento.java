@@ -27,6 +27,7 @@ public class Evento {
 	private String logo;
 	@DateTimeFormat
 	private Calendar data;
+	private Boolean fechamento;
 
 	public int getId() {
 		return id;
@@ -92,6 +93,14 @@ public class Evento {
 
 	public void setData(Calendar data) {
 		this.data = data;
+	}
+
+	public Boolean getFechamento() {
+		return fechamento;
+	}
+
+	public void setFechamento(Boolean fechamento) {
+		this.fechamento = fechamento;
 	}
 
 	@Override

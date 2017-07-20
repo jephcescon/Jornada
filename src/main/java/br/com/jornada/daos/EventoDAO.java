@@ -20,6 +20,10 @@ public class EventoDAO {
 	public List<Evento> listar() {
 		return manager.createQuery("select e from Evento e", Evento.class).getResultList();
 	}
+	
+	public List<Evento> listarAtivos() {
+		return manager.createQuery("select e from Evento e where fechamento = 1", Evento.class).getResultList();
+	}
 
 	public void gravar(Evento evento) {
 		this.manager.persist(evento);

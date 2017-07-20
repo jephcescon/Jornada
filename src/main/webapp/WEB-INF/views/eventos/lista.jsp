@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/cabecalho.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
+
     <!-- Page Content -->
     <div class="container">
     	<div class="row">
@@ -25,6 +28,7 @@
 								<th>Organizador</th>
 								<th>Local</th>
 								<th>Data</th>
+								<th>Fechamento</th>
 								<th>Ações</th>
 							</tr>
 						</thead>
@@ -36,6 +40,12 @@
 									<td>${evento.organizador.nome}</td>
 									<td>${evento.local}</td>
 									<td><fmt:formatDate pattern="dd/MM/yyyy" value="${evento.data.time}" /></td>
+									<td>
+										<input type="checkbox" name="fechamento" data-toggle="toggle" data-on="Aberta" 
+										data-off="Fechada" data-onstyle="success" data-offstyle="danger" data-size="mini" 
+										<c:if test = "${evento.fechamento}">checked</c:if> 
+										disabled readonly/>
+									</td>
 									<td>
 										<button type="button" class="btn btn-success" aria-label="Left Align">
 	  										<a href="${s:mvcUrl('EC#editar').arg(0, evento.id).build()}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
@@ -73,5 +83,6 @@
         <!-- /.row -->
 
         <hr>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <%@ include file="/WEB-INF/views/rodape.jsp" %>

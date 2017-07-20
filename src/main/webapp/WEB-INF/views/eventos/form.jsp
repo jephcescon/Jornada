@@ -3,6 +3,8 @@
 <%@ include file="/WEB-INF/views/cabecalho.jsp" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
+
     <!-- Page Content -->
     <div class="container">
         <!-- Portfolio Item Row -->
@@ -49,6 +51,12 @@
 						<input type="text" name="data" class="form-control" id="data" placeholder="Data dd/mm/aaaa" value="" />
 						<form:errors path="evento.data" />
 					</div>
+					<div for="fechamento" class="form-group">
+    					<label>Envio de Palestras</label><br />
+						<input type="checkbox" name="fechamento" data-toggle="toggle" data-on="Aberta" data-off="Fechada" data-onstyle="success" data-offstyle="danger" checked />
+					</div>
+					<br /><br />
+					
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</form:form>
             </div>
@@ -57,5 +65,6 @@
         <!-- /.row -->
 
         <hr>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <%@ include file="/WEB-INF/views/rodape.jsp" %>
