@@ -15,7 +15,19 @@
     <meta name="author" content="">
 
     <title>Palestras</title>
-
+	
+	<style>
+		.btn-circle {
+		  width: 30px;
+		  height: 30px;
+		  text-align: center;
+		  padding: 6px 0;
+		  font-size: 12px;
+		  line-height: 1.428571429;
+		  border-radius: 50%;
+		}				
+	</style>
+	
     <!-- Bootstrap Core CSS -->
     <link href="https://blackrockdigital.github.io/startbootstrap-portfolio-item/css/bootstrap.min.css" rel="stylesheet">
 

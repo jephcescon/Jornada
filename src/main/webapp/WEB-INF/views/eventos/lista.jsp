@@ -7,16 +7,7 @@
 
     <!-- Page Content -->
     <div class="container">
-    	<div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    <small>Lista de Eventos</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
-        
-        <!-- Portfolio Item Row -->
+    	<!-- Portfolio Item Row -->
         <div class="row">
             <div class="col-md-12">
             	<div class="table-responsive">

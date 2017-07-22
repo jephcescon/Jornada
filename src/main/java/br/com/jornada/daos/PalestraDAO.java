@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.jornada.models.Evento;
 import br.com.jornada.models.Palestra;
 
 @Repository
@@ -37,5 +38,10 @@ public class PalestraDAO {
 	public void apagar(Integer id) {
 		Palestra palestra = this.manager.find(Palestra.class, id);
 		this.manager.remove(palestra);
+	}
+	
+	public List<Palestra> listar(Evento evento) {
+		return manager.createQuery("select p from Palestra p where evento = :evento", Palestra.class)
+				.setParameter("evento", evento).getResultList();
 	}
 }
