@@ -56,7 +56,7 @@
             </div>
 			<c:forEach items="${palestras}" var="palestra">
             <div class="col-sm-3 col-xs-6">
-                <a href="#">
+                <a href="${s:mvcUrl('HC#palestraDetalhe').arg(0, palestra.id).build()}">
                 	<h4>${palestra.titulo}</h4>
                     <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
                 </a>

@@ -39,4 +39,12 @@ public class HomeController {
 		modelAndView.addObject("palestras", palestras);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/palestraDetalhe/{id}", method = RequestMethod.GET)
+	public ModelAndView palestraDetalhe(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("home/palestrasDetalhe");
+		Palestra palestra = palestraDao.buscar(id);
+		modelAndView.addObject("palestra", palestra);
+		return modelAndView;
+	}
 }
