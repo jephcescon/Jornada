@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.StringUtils;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -43,7 +44,13 @@ public class Usuario implements UserDetails {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		String[] array = nome.split(" ");
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = StringUtils.capitalize(array[i]);
+		}
+		
+		this.nome = String.join(" ", array);
 	}
 
 	public String getEmail() {
