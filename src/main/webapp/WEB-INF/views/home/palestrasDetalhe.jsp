@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/cabecalho.jsp" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
 
@@ -43,8 +44,20 @@
                 <button type="button" class="btn btn-primary img-circle"><i class="glyphicon glyphicon-thumbs-up"></i> Gostei</button> 
                 <button type="button" class="btn btn-danger img-circle"><i class="glyphicon glyphicon-thumbs-down"></i> Não Gostei</button>
                 
-                <h3>Comentar</h3>
-                <button type="button" class="btn btn-success img-circle"><i class="glyphicon glyphicon-pencil"></i> Escrever</button>
+                <h3>Comentários</h3>
+                <security:authorize access="hasRole('ROLE_ADMIN')">
+                <form:form action="${s:mvcUrl('CC#gravar').build() }" method="post">
+	  				<textarea class="form-control" rows="2" id="mensagem" name="mensagem"></textarea><br />
+	  				<input type="hidden" name="palestra" value="${palestra.id}">
+	  				<input type="hidden" name="usuario" value="${palestra.palestrante.id}">
+	  				<input type="hidden" name="data" value="">
+	                <button type="submit" class="btn btn-success img-circle"><i class="glyphicon glyphicon-pencil"></i> Escrever</button>
+                </form:form>
+                </security:authorize>
+                <security:authorize access="!hasRole('ROLE_ADMIN')">
+                	<textarea class="form-control" rows="2" id="mensagem" name="mensagem" disabled>Necessário estar logado para comentar as palestras</textarea><br />
+                	<a href="${pageContext.servletContext.contextPath}/login" class="btn btn-success" role="button"><i class="glyphicon glyphicon-lock"></i> Logar</a>
+                </security:authorize>
             </div>
                 
         </div>

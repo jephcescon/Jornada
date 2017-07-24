@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/br/com/jornada/controllers/EventoController.java=UTF-8
+encoding//src/main/java/br/com/jornada/daos/EventoDAO.java=UTF-8
+encoding//src/main/java/br/com/jornada/models/Evento.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/message.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/eventos/form.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/usuarios/form.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/usuarios/lista.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/usuarios/ok.jsp=UTF-8
