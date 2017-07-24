@@ -82,6 +82,12 @@
 							<li><a href="${s:mvcUrl('PC#form').build() }">Inclur</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Comentários<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="${s:mvcUrl('CC#listar').build() }">Listar</a></li>
+						</ul>
+					</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 	<security:authorize access="hasRole('ROLE_ADMIN')">

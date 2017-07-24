@@ -26,4 +26,13 @@ public class ComentarioDAO {
 		return manager.createQuery("select c from Comentario c where palestra = :palestra", Comentario.class)
 				.setParameter("palestra", palestra).getResultList();
 	}
+
+	public List<Comentario> listar() {
+		return this.manager.createQuery("select c from Comentario c", Comentario.class).getResultList();
+	}
+
+	public void apagar(Integer id) {
+		Comentario comentario = this.manager.find(Comentario.class, id);		
+		this.manager.remove(comentario);
+	}	
 }
