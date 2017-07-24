@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/cabecalho.jsp" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
 
@@ -69,12 +70,12 @@
                 <h3 class="page-header">Comentários</h3>
             </div>
 			
+			<c:forEach items="${comentarios}" var="comentario">
             <div class="col-sm-12 col-xs-12">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <b>Jepherson Cescon</b> 22/07/2017
-                 
+                <p>"${comentario.mensagem}"</p>
+                <b><em>${comentario.usuario.nome}</em></b> em <fmt:formatDate pattern="dd/MM/yyyy" value="${comentario.data.time}" /><br /><br />
             </div>
-			
+			</c:forEach>
             
         </div>
         

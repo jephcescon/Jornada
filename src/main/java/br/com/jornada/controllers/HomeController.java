@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.jornada.daos.ComentarioDAO;
 import br.com.jornada.daos.EventoDAO;
 import br.com.jornada.daos.PalestraDAO;
+import br.com.jornada.models.Comentario;
 import br.com.jornada.models.Evento;
 import br.com.jornada.models.Palestra;
 
@@ -21,6 +23,8 @@ public class HomeController {
 	private EventoDAO eventoDao;
 	@Autowired
 	private PalestraDAO palestraDao;
+	@Autowired
+	private ComentarioDAO comentarioDao;
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -45,6 +49,8 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("home/palestrasDetalhe");
 		Palestra palestra = palestraDao.buscar(id);
 		modelAndView.addObject("palestra", palestra);
+		List<Comentario> comentarios = comentarioDao.buscar(palestra);
+		modelAndView.addObject("comentarios", comentarios);
 		return modelAndView;
 	}
 }

@@ -18,7 +18,6 @@ public class ComentarioController {
 	
 	@RequestMapping("/gravar")
 	public ModelAndView gravar(Comentario comentario, BindingResult result) {
-		//System.out.println("teste");
 		comentarioDao.gravar(comentario);
 		return new ModelAndView("redirect:/evento");
 	}
