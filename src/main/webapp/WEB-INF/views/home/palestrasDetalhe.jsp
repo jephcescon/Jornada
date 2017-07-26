@@ -41,10 +41,19 @@
                 </ul>
                 
                 <h3>Votação</h3>
-                <b>Votos: </b> 0 (0 Positivos <i class="glyphicon glyphicon-thumbs-up"></i> 0%  - 0 Negativos  <i class="glyphicon glyphicon-thumbs-down"></i> 0% )<br /><br />
-                <button type="button" class="btn btn-primary img-circle"><i class="glyphicon glyphicon-thumbs-up"></i> Gostei</button> 
-                <button type="button" class="btn btn-danger img-circle"><i class="glyphicon glyphicon-thumbs-down"></i> Não Gostei</button>
-                
+                <b>Votos: </b> ${votacao.votos} (${votacao.positivos} Positivos <i class="glyphicon glyphicon-thumbs-up"></i> ${(100*votacao.positivos/votacao.votos)}%  - ${votacao.negativos} Negativos  <i class="glyphicon glyphicon-thumbs-down"></i> ${(100*votacao.negativos/votacao.votos) }% )<br /><br />
+                <form:form action="${s:mvcUrl('VC#votar').build() }" method="post">
+                	<input type="hidden" name="palestra" value="${palestra.id}">
+	  				<input type="hidden" name="usuario" value="${palestra.palestrante.id}">
+	  				<input type="hidden" name="voto" value="SIM">
+                	<button type="submit" class="btn btn-success img-circle"><i class="glyphicon glyphicon-thumbs-up"></i> Gostei</button>
+                </form:form>
+                <form:form action="${s:mvcUrl('VC#votar').build() }" method="post">
+                	<input type="hidden" name="palestra" value="${palestra.id}">
+	  				<input type="hidden" name="usuario" value="${palestra.palestrante.id}">
+	  				<input type="hidden" name="voto" value="NAO"> 
+                	<button type="submit" class="btn btn-danger img-circle"><i class="glyphicon glyphicon-thumbs-down"></i> Não Gostei</button>
+                </form:form>
                 <h3>Comentários</h3>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
                 <form:form action="${s:mvcUrl('CC#gravar').build() }" method="post">

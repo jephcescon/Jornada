@@ -12,9 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.jornada.daos.ComentarioDAO;
 import br.com.jornada.daos.EventoDAO;
 import br.com.jornada.daos.PalestraDAO;
+import br.com.jornada.daos.VotoDAO;
 import br.com.jornada.models.Comentario;
 import br.com.jornada.models.Evento;
 import br.com.jornada.models.Palestra;
+import br.com.jornada.models.TipoVoto;
+import br.com.jornada.models.Votacao;
+import br.com.jornada.models.Voto;
 
 @Controller
 public class HomeController {
@@ -25,6 +29,8 @@ public class HomeController {
 	private PalestraDAO palestraDao;
 	@Autowired
 	private ComentarioDAO comentarioDao;
+	@Autowired
+	private VotoDAO votoDao;
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -51,6 +57,26 @@ public class HomeController {
 		modelAndView.addObject("palestra", palestra);
 		List<Comentario> comentarios = comentarioDao.buscar(palestra);
 		modelAndView.addObject("comentarios", comentarios);
+		
+		List<Voto> votos = votoDao.listar();
+		modelAndView.addObject("votos", votos);
+		
+		Votacao votacao = new Votacao();
+		List<Voto> contarVotos = votoDao.contarVotos(palestra);
+		int negativos = 0, positivos = 0;
+		
+		for (Voto voto : contarVotos) {
+			if(voto.getVoto() == TipoVoto.NAO){
+				negativos++;
+			}else{
+				positivos++;
+			}
+		}
+		votacao.setVotos(contarVotos.size());
+		votacao.setPositivos(positivos);
+		votacao.setNegativos(negativos);
+		modelAndView.addObject("votacao", votacao);
+		
 		return modelAndView;
 	}
 }
